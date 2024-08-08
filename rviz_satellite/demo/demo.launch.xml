@@ -1,0 +1,11 @@
+<launch>
+    <!-- Launch RViz2 with the specified configuration file -->
+    <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share rviz_satellite)/demo/demo.rviz" output="screen" />
+
+    <!-- Publish GPS coordinates for the desired location -->
+    <node pkg="rviz_satellite" exec="publish_demo_data" args="18.65295 73.79382" output="screen" />
+
+    <!-- Static transform publisher for map and gps_sensor -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" args="0 0 0 0 0 0 map gps_sensor" output="screen" />
+</launch>
+
